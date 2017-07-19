@@ -3,12 +3,12 @@
 
 ___
 
-## Uso
+## Usage 
 
 `npm i && npm start`
 
-## Desarrollo
+## Development 
 
 `NODE_ENV='development' npm start | npx pino`
 
-_Nota_: se recomienda el uso de [npx](https://www.npmjs.com/package/npx) para manejar dependencias globales (temporales) como [pino](https://www.npmjs.com/package/pino) en este caso.
+_Nota_: [npx](https://www.npmjs.com/package/npx) usage is a __must__ for working with (temporal) global modules like [pino](https://www.npmjs.com/package/pino).

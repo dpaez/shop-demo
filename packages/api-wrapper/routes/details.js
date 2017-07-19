@@ -28,12 +28,18 @@ router.get('/items/:id', function(req, res, next) {
             name: 'Diego',
             lastname: 'Paez'
         }
+
         out.item = parseDetails(jsonArr[0]);
-        out.item.description = (jsonArr[1] && jsonArr[1].text) ? jsonArr[1].text : '';
+        const descObj = jsonArr[1];
+        out.item.description = (descObj.snapshot) ? descObj.snapshot.url : '';
         res.send(out);
     })
     .catch(err => {
         req.log.error(`Error when calling details api: ${JSON.stringify(err)}`);
+        err = err || {};
+        if (!err.statusCode){
+            err.statusCode = 404;
+        }
         res.json(err);
     });
 });

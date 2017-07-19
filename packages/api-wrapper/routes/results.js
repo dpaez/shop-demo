@@ -31,6 +31,10 @@ router.get('/items', function(req, res, next) {
         })
         .catch(err => {
             req.log.error(`Error when calling search results api: ${JSON.stringify(err)}`);
+            err = err || {};
+            if (!err.statusCode){
+                err.statusCode = 404;
+            }
             res.json(err);
         });
 });
