@@ -16,4 +16,4 @@ $ API_BASE='localhost:9290' npm run server:dev
 Notes:
 - `API_BASE` refers to the endpoint `api-wrapper`'s project.
 - The `api-wrapper` is required to be running in order to this demo work properly.
-
+- Also you define use a `.env` file to set the API_BASE.
