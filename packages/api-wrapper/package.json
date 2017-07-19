@@ -9,6 +9,7 @@
     "body-parser": "~1.17.1",
     "confidence": "^3.0.2",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "express-pino-logger": "^2.0.0",
