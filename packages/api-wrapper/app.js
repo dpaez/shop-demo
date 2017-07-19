@@ -4,8 +4,9 @@ const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const helmet = require('helmet');
-const pino = require('express-pino-logger')
+const pino = require('express-pino-logger');
 // local
 const results = require('./routes/results');
 const details = require('./routes/details');
@@ -13,6 +14,7 @@ const details = require('./routes/details');
 const api = express();
 
 api.use(helmet());
+api.use(cors());
 api.use(pino());
 api.use(bodyParser.json());
 api.use(bodyParser.urlencoded({ extended: false }));
