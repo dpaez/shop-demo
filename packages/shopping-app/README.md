@@ -17,3 +17,7 @@ Notes:
 - `API_BASE` refers to the endpoint `api-wrapper`'s project.
 - The `api-wrapper` is required to be running in order to this demo work properly.
 - Also you define use a `.env` file to set the API_BASE.
+
+## Demo
+
+Live demo [here](https://shopping-app-hcpuxuuuss.now.sh).
