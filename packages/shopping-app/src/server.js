@@ -3,6 +3,8 @@ import 'ignore-styles';
 import fs from 'fs';
 import path from 'path';
 // npm
+import dotenv from 'dotenv';
+dotenv.config();
 import axios from 'axios';
 import express from 'express';
 import helmet from 'helmet';
@@ -14,12 +16,12 @@ import serialize from 'serialize-javascript';
 // local
 import App from './App';
 
-const API_BASE = process.env.API_BASE || 'localhost:9290';
+const API_BASE = process.env.API_BASE || 'http://localhost:9290';
 
 const endpointsGenerator = (base) => {
     return {
-        search: (query) => `http://localhost:9290/api/items?q=${query}`,
-        details: (id) => `http://localhost:9290/api/items/${id}`
+        search: query => `${base}/api/items?q=${query}`,
+        details: id => `${base}/api/items/${id}`
     }
 }
 
@@ -96,6 +98,7 @@ app.get('/items', (req, res, next) => {
             html = html.replace('__META_TITLE', 'Shopping App Demo');
             html = html.replace('__META_DESC', title);
             html = html.replace('__OUT', out);
+            html = html.replace('window.base', `window.base = "${API_BASE}";`);
             html = html.replace('window.__STATE', `window.__STATE = ${serialize(props)};`);
             res.status(context.statusCode || 200).send(html);
         })
@@ -136,6 +139,7 @@ app.get('/items/:id', (req, res, next) => {
             html = html.replace('__META_TITLE', 'Shopping App Demo');
             html = html.replace('__META_DESC', title);
             html = html.replace('__OUT', out);
+            html = html.replace('window.base', `window.base = "${API_BASE}";`);
             html = html.replace('window.__STATE', `window.__STATE = ${serialize(props)};`);
             res.status(context.statusCode || 200).send(html);
         })
